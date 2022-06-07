@@ -1,0 +1,212 @@
+PARA INSTALAR DOCKER EN UBUNTU Y EL APLICATIVO
+
+sudo apt-get update
+wget https://get.docker.com/
+sudo mv index.html install_docker.sh
+sudo chmod 777 install_docker.sh
+sudo ./install_docker.sh
+sudo rm install_docker.sh
+sudo curl -L "https://github.com/docker/compose/releases/download/1.28.2/docker-compose-$(uname -s)-$(uname -m)" -o 
+/usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+sudo git clone https://github.com/ioticos/ioticos_god_level_services.git
+sudo mv ioticos_god_level_services ioticos
+cd ioticos
+https://es.pornhub.com/view_video.php?viewkey=ph5d489b8066f86
+https://es.pornhub.com/view_video.php?viewkey=ph5d0337e3e29e9
+// WARNING .ENV 
+
+sudo docker-compose -f docker_compose_production.yml up
+
+sudo docker-compose up
+=======================================================
+
+http://18.229.172.128:18083/ DashBoard 
+
+Arrancar Terminal
+ssh -i C:\Users\ASUS\DockerTest\SismaIOT.pem ubuntu@ec2-18-229-172-128.sa-east-1.compute.amazonaws.com
+
+Dirección IPv4 pública: 18.229.172.128
+
+arrancar Sql desde Comandos
+sqlcmd -S localhost -U SA -P '<YourPassword>'
+
+para instalar el Agent de SQL 
+sudo /opt/mssql/bin/mssql-conf set sqlagent.enabled true
+
+Verificar servicos
+systemctl status mssql-server --no-pager
+
+=============================================================================================
+INSTALAR SQL SERVER EN UBUNTU 
+
+ssh -i C:\Users\ASUS\DockerTest\SismaIOT.pem ubuntu@18.229.172.128
+sudo su
+
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+**********Para Sql 2017
+sudo add-apt-repository "$(wget -qO- https://packages.microsoft.com/config/ubuntu/18.04/mssql-server-2017.list)"
+**********Para Sql2019
+sudo add-apt-repository "$(wget -qO- https://packages.microsoft.com/config/ubuntu/18.04/mssql-server-2019.list)"
+
+sudo apt-get update
+sudo apt-get install -y mssql-server
+
+sudo /opt/mssql/bin/mssql-conf setup
+
+systemctl status mssql-server --no-pager  ==> Para saber si esta funcionando
+
+curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+
+curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
+
+sudo apt-get update 
+sudo apt-get install mssql-tools unixodbc-dev
+
+echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
+
+echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
+source ~/.bashrc
+
+Para actualizar a la última versión de mssql-tools, ejecute los siguientes comandos:
+
+sudo apt-get update 
+sudo apt-get install mssql-tools
+
+
+=============================================================================================
+Instalar Node en ubuntu
+
+cd ~
+curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
+nano nodesource_setup.sh          ==> Verificar que sea la ultima
+sudo bash nodesource_setup.sh
+sudo apt-get install -y nodejs
+nodejs -v
+npm -v
+=======================================================================
+ 
+ Cambiar permiso de carpetas 
+
+ chown ubuntu:ubuntu -R /home/ubuntu/sismaiot/
+
+==========================================================================
+EMQX 
+
+root@ip-172-31-11-121:/emqx# ./bin/emqx start
+
+================================================================================
+COMANDOS DE DOCKER
+
+Imagenes ==> Hub.Docker.com
+
+Docker images | head ==> lista imagenes
+
+Docker rmi <nombre imagen>
+Docker images aq ==> lista imagenes resumido
+
+Docker stop $(docker ps -aq)
+Docker rm $(docker ps -aq) ==> Los que estan corriendo
+
+El parametro --name le da nombre al contenedor
+
+Docker pull <nombre  imagen> ==> Descarga
+
+Docker ps -a ==> lista las detenidas
+
+Docker run <-d => demonio><nombre  imagen>:version ==> Descarga y corre la imagen
+
+docker log <id del contenedor> ==> muesta los log
+
+TIPS 
+
+1- docker stats 
+	Estadisticas
+2- docker system prune
+	borra las imagenes que no se usan
+3- docker inspect <containerid>
+	trae datos delcontenedor
+4- docker cp <archivo> <id container>:/ruta
+	copia archivos desde y hacia el container
+5- en restart: on-failure:10
+	lo intentara 10 veces sino para
+6- docker logs --tail=10 -t <idcontainer> 
+	entraga los 10 log del container con fecha
+
+Creacion de Contenedores
+
+# Para Crearlo
+# docker build -t nodemqtttelegram:latest .
+# docker run -p 8080:8080 nodemqtttelegram:latest 
+
+# para transferirlo
+# Correr
+
+# docker images
+# docker save -o nodemqtttelegram.tar nodemqtttelegram
+# Copiar la imagen.tar al server de destino
+# scp nodemqtttelegram.tar root@157.230.220.135:/root/proyects-digitalocean
+# Se construye la imagen en el server
+# docker load < nodemqtttelegram.tar
+
+# Para AWS
+# scp -i /path/to/your/.pemkey -r /copy/from/path user@server:/copy/to/path
+# -r si es un directorio.
+# scp -i /Users/ASUS/DockerTest/SismaIOT.pem Captura.JPG ubuntu@18.229.172.128:/home/ubuntu
+
+
+===========================================================================
+COMANDOS PM NODEJS
+ 
+npm install pm2 -g
+00- pm2 ls
+01- pm2 start <name> --watch  ==> para reinicio inmediato co cambios
+02- pm2 start <name> --name   ==> asugna nombre
+03- pm2 restart <neme,id>     ==> reiniciar
+04- pm2 stop <name, id>       ==> parar programa
+05- pn2 stop all 
+06- pm2 start all
+07- pm2 delete all
+08- pm2 delete <id> 
+09- pm2 monit                 ==> Monitor
+10- pm2 startup               ==> para arrancar con reboot
+    pm2 save                  ==> para salver configuracion
+11- pm2 unestartup
+12- pm2 ecosystem
+
+========================================================================================
+GitHub
+
+Usuario : ehm.consultores@gmail.com
+Password: A$123valentina
+
+git init
+git add <file>
+git add .  => adiciona todo
+git status => que archivos no estan incluidos en Git
+git commit
+git push   => subir copia
+git clone  => traer del repositorio
+
+git init 
+git add .
+git commit -m "first commit" 
+git branch 
+git remote add origin https://github.com/Edgar6305/Rivher.git
+git push -u origin master
+
+===================================================================
+OpenWeather Team 
+
+Your API key is 7e4deae1e1be9aed344792084dabb28d
+
+
+
+
+
+
+
+
+
+
+
