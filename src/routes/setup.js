@@ -85,7 +85,7 @@ router.post('/movimiento', ensureToken, async (req, res) => {
             bot.sendBot(bot.idChatBaseUno, botMessage)
             res.status(500).json({ "status": "No data" })
         }else{
-            var result = await sql.query`UPDATE Avisos SET Estado='IN' WHERE Empresa=(${req.body.empresa} AND CodigoAplicacion=${req.body.aplicacion} AND Tipo='REVISION')`
+            var result = await sql.query`UPDATE Avisos SET Estado='IN' WHERE Empresa=${req.body.empresa} AND CodigoAplicacion=${req.body.aplicacion} AND Tipo='REVISION'`
             var botMessage ="Se Grabo Revisión Empresa " + req.token.user.empresa
             bot.sendBot(bot.idChatBaseUno, botMessage)
             res.status(200).json({ "status": "OK"})
@@ -138,5 +138,6 @@ function ensureToken(req, res, next){
         }
     })    
 }
+
 
 module.exports = router;
